@@ -25,9 +25,29 @@ function generar(){
 
     contrasena.value = password;
 
+    validarContraseña(password);
+
+
 }
+
+
+function validarContraseña(password) {
+    const esFuerte = password.length >= 8 &&
+                     /[A-Z]/.test(password) && 
+                     /[a-z]/.test(password) && 
+                     /[0-9]/.test(password) && 
+                     /[_\-?@/!%^*]/.test(password);
+
+    if (esFuerte) {
+        contrasena.style.border = '3px solid green'; 
+    } else {
+        contrasena.style.border = '3px solid red'; 
+    }
+}
+
 
 btnLimpiar.addEventListener('click', () => {
     cantidad.value = '';
     contrasena.value = '';
 });
+
